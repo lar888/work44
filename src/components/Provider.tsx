@@ -1,14 +1,14 @@
-import { useState, type ReactNode, useEffect } from "react";
-import type { UserInterface } from "../types/user.interface";
-import { fetchData } from "../utils/api";
-import { AppContext } from "../context/AppContext";
+import { useState, type ReactNode, useEffect } from 'react'
+import type { UserInterface } from '../types/user.interface'
+import { fetchData } from '../utils/api'
+import { AppContext } from '../context/AppContext'
 
 interface ProviderProps {
-	children: ReactNode
+  children: ReactNode
 }
 
-const Provider = ({children}: ProviderProps) => {
-	const [users, setUsers] = useState<UserInterface[]>([])
+const Provider = ({ children }: ProviderProps) => {
+  const [users, setUsers] = useState<UserInterface[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -27,11 +27,7 @@ const Provider = ({children}: ProviderProps) => {
     getUsers()
   }, [])
 
-  return (
-    <AppContext.Provider value={{ users, loading, error }}>
-      {children}
-    </AppContext.Provider>
-  )
-};
+  return <AppContext.Provider value={{ users, loading, error }}>{children}</AppContext.Provider>
+}
 
-export default Provider;
+export default Provider
